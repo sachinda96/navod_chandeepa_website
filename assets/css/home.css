@@ -385,5 +385,70 @@ nav.navbar.bootsnav.navbar-fixed.white ul.nav > li > a.btn-whatsapp span {
 }
 
 
+.fun-factor-area {
+    min-height: 300px;  /* adjust to your desired height */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+    .fun-factor-area.bg-fixed {
+        background-attachment: scroll !important;
+        min-height: 300px !important;  /* ensure div is tall enough */
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   Responsive adjustments
+   ------------------------------------------------------------------ */
+   /* Desktop: keep parallax effect */
+@media (min-width: 768px) {
+    #home {
+        background-attachment: fixed;
+    }
+}
+
+/* Mobile: scrollable background */
+@media (max-width: 767px) {
+    #home {
+        background-attachment: scroll !important;
+        background-size: cover;
+        background-position: center center;
+        min-height: 400px; /* adjust as needed */
+    }
+}
+
+/* General background styling */
+#welcome-banner, #home {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Optional: make content vertically centered */
+.item-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.item-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Ensure arrow button stays at bottom */
+.arrow-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
 
 
