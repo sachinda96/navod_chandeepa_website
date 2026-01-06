@@ -32,3 +32,358 @@
         transform: translateX(-100%); /* Translate all items to the left (negative direction) */
     }
 }
+
+/* ------------------------------------------------------------------
+   Banner spacing: ensure the top banner sits below the fixed navbar
+   and add left/right spacing so content isn't flush with the edges.
+   Adjust values if your navbar height differs.
+   ------------------------------------------------------------------ */
+.welcome-banner {
+    box-sizing: border-box;
+    padding-top: 70px; /* space to clear the fixed navbar (tweak if needed) */
+    padding-left: 15px; /* inner left margin for content (reduced so content sits more left) */
+    padding-right: 30px; /* inner right margin for content */
+}
+
+/* Banner background: zoomed out on desktop, adjusted for mobile */
+.welcome-banner {
+    /* make background fill the banner area while preserving aspect ratio */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@media (max-width: 767px) {
+    .welcome-banner {
+        background-size: cover;
+    }
+}
+
+/* Align welcome content left on medium+ screens so it sits on the left side */
+@media (min-width: 768px) {
+    .welcome-content {
+        text-align: left;
+        margin-left: 0;
+    }
+}
+
+/* Subtitle under main banner heading */
+.welcome-content .subtitle {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 8px;
+    opacity: 0.95;
+}
+
+/* Banner fonts (Sinhala heading and subtitle) */
+.welcome-content h1 {
+    font-family: 'Noto Serif Sinhala', 'Abhaya Libre', serif;
+    font-weight: 600;
+    /* Enlarged per request: ~20% bigger than the original 80px (≈96px) */
+    font-size: 96px;
+    line-height: 1.02;
+    /* keep name parts on one line on wider screens */
+    white-space: nowrap;
+}
+.welcome-content .subtitle {
+    font-family: 'Abhaya Libre', serif;
+}
+
+/* Typed element (animated text) should use the same Sinhala font */
+.welcome-content h2,
+.welcome-content h2 .element {
+    font-family: 'Noto Serif Sinhala', 'Abhaya Libre', serif;
+    font-weight: 400;
+}
+
+/* Class section styles */
+.class-area .main-class-image {
+    padding: 40px 0 20px;
+}
+ .class-area .main-class-image img {
+     max-width: 64%; /* reduced ~30% from previous 92% */
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.35s ease;
+}
+.class-gallery .thumb-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.class-gallery .class-prev,
+.class-gallery .class-next {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.class-gallery .thumbs {
+    overflow: hidden;
+    width: auto;
+}
+.class-gallery .thumbs-inner {
+    display: flex;
+    transition: transform 0.45s ease;
+}
+.class-gallery .thumb {
+    flex: 0 0 260px; /* increase thumbnails for better visibility */
+    width: 260px;
+    padding: 10px;
+    margin-right: 30px; /* increased space between thumbnails */
+    box-sizing: border-box;
+    text-align: center;
+}
+.class-gallery .thumb:last-child { margin-right: 0; }
+
+@media (max-width: 767px) {
+    .class-gallery .thumb { margin-right: 16px; }
+    .class-gallery .thumb:last-child { margin-right: 0; }
+}
+.class-gallery .thumb img {
+    width: 100%;
+    height: 170px; /* larger visible height */
+    object-fit: cover;
+    display: inline-block;
+    border-radius: 6px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.class-gallery .thumb.active img {
+    transform: scale(1.30); /* stronger zoom for active (center) thumbnail */
+    transform-origin: center center;
+    z-index: 2;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.36);
+}
+
+@media (max-width: 767px) {
+    .class-area .main-class-image img { max-width: 66%; }
+    .class-gallery .thumbs { width: 100%; }
+    .class-gallery .thumb { flex: 0 0 140px; width: 140px; }
+    .class-gallery .thumb img { height: 110px; }
+}
+
+/* Larger thumb container on desktop to show three bigger thumbs */
+@media (min-width: 768px) {
+    .class-gallery .thumbs { width: 840px; }
+    .class-area .main-class-image { padding: 60px 0 40px; }
+}
+
+/* Slightly smaller spacing on narrow screens */
+@media (max-width: 767px) {
+    .welcome-banner {
+        padding-top: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Increase mobile H1 slightly (≈20% larger than previous 40px -> 48px) */
+    .welcome-content h1 { font-size: 48px; }
+
+    /* allow wrapping on narrow screens so text doesn't overflow */
+    .welcome-content h1 { white-space: normal; }
+}
+
+/* Increase navbar logo size slightly on larger screens */
+@media (min-width: 993px) {
+    nav.navbar .navbar-brand img.logo {
+        height: 120px; /* increased as requested */
+        width: auto;
+    }
+}
+
+/* WhatsApp button in navbar */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    background: #25D366; /* WhatsApp green */
+    color: #fff !important;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.btn-whatsapp i.fa-whatsapp {
+    margin-right: 8px;
+    font-size: 16px;
+}
+.btn-whatsapp:hover {
+    text-decoration: none;
+    opacity: 0.95;
+}
+.whatsapp-text { display:inline-block; }
+
+/* On very small screens, simplify the button */
+@media (max-width: 480px) {
+    .btn-whatsapp { padding: 6px 8px; }
+    .whatsapp-text { display: none; }
+}
+
+/* Fixed floating WhatsApp button shown when page scrolls */
+.btn-whatsapp-fixed{
+    position: fixed;
+    right: 16px;
+    top: 12px;
+    background: #25D366;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .25s ease, transform .25s ease;
+    display: none; /* hidden by default; will be toggled by JS */
+}
+.btn-whatsapp-fixed.show{ display:inline-flex; opacity: 1; transform: translateY(0); }
+.btn-whatsapp-fixed i{ font-size: 18px; }
+
+/* Ensure WhatsApp in navbar always visible when navbar is fixed */
+nav.navbar.bootsnav.navbar-fixed .btn-whatsapp{
+    display: inline-flex !important;
+    z-index: 1100;
+}
+
+@media (max-width: 480px){
+    /* keep floating button smaller on very small screens */
+    .btn-whatsapp-fixed{ right: 10px; top: 8px; padding: 8px; }
+}
+
+/* Ensure footer social icons are visible (white) */
+footer .footer-social li a,
+footer .footer-social li a i{
+    color: #ffffff !important;
+}
+
+/* ------------------------------------------------------------------
+   Fun Factor: ensure all items sit on a single horizontal line
+   - uses flexbox on the wrapper and prevents wrapping
+   - allows horizontal scrolling on very narrow screens
+   - keeps items centered on wider screens
+   ------------------------------------------------------------------ */
+.fun-factor-area .col-md-18 {
+    display: flex;
+    flex-wrap: nowrap; /* force single row */
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    overflow-x: auto; /* allow horizontal scroll on very small screens */
+    -webkit-overflow-scrolling: touch;
+    padding-left: 15px; /* small inner padding to match grid */
+    padding-right: 15px;
+}
+.fun-factor-area .col-md-18 .item {
+    float: none; /* override bootstrap column floats inside flex container */
+    margin-bottom: 0; /* remove bottom spacing (we're in one line) */
+    flex: 0 0 auto;
+    min-width: 180px; /* ensure a reasonable minimum for each item */
+    max-width: 280px;
+    text-align: center;
+}
+.fun-factor-area .fun-fact {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* keep icon, number and label centered */
+}
+
+@media (max-width: 767px) {
+    .fun-factor-area .col-md-18 { gap: 12px; }
+    .fun-factor-area .col-md-18 .item { min-width: 150px; max-width: 220px; }
+}
+
+/* Contact info alignment: place icon left and text (h4 + p) stacked to the right on wider screens
+   and stack vertically on narrow screens for better spacing and alignment */
+.contact-info-area .item{
+    display: flex;
+    flex-direction: column; /* icon on top, text below */
+    align-items: center;    /* center icon and text horizontally */
+    text-align: center;
+    gap: 8px;
+}
+.contact-info-area .item i{
+    font-size: 36px; /* icon size */
+    color: #298ef6;
+}
+.contact-info-area .item h4{
+    margin: 0;
+    text-transform: capitalize;
+}
+.contact-info-area .item p{
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* NEWS slider styles */
+.news-area .news-slider{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.news-area .news-slider .slide{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+.news-area .news-slider .slide.active{
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+.news-area .news-slider img{ display:block; width:100%; height:auto; border-radius:6px; }
+
+/* Center slider on small screens */
+@media (max-width: 767px){
+    .news-area .col-md-8 { padding-left: 8px; padding-right: 8px; }
+}
+
+/* Force WhatsApp button color in all navbar states */
+nav.navbar.bootsnav ul.nav > li > a.btn-whatsapp,
+nav.navbar.bootsnav ul.nav > li > a.btn-whatsapp i,
+nav.navbar.bootsnav ul.nav > li > a.btn-whatsapp span {
+    color: #25D366 !important;
+}
+
+/* When navbar is scrolled */
+nav.navbar.bootsnav.navbar-fixed.white ul.nav > li > a.btn-whatsapp,
+nav.navbar.bootsnav.navbar-fixed.white ul.nav > li > a.btn-whatsapp i,
+nav.navbar.bootsnav.navbar-fixed.white ul.nav > li > a.btn-whatsapp span {
+    color: #25D366 !important;
+}
+
+
+/* FORCE logo size on mobile (Bootsnav fix) */
+@media (max-width: 1050px) {
+
+    nav.navbar.bootsnav .navbar-brand {
+        padding: 6px 15px !important;
+        height: auto !important;
+    }
+
+    nav.navbar.bootsnav .navbar-brand img,
+    nav.navbar.bootsnav .logo.logo-display,
+    nav.navbar.bootsnav .logo.logo-scrolled {
+        height: 55px !important;   /* change to 60px if needed */
+        width: auto !important;
+        max-height: none !important;
+    }
+
+    nav.navbar.bootsnav .navbar-header {
+        height: auto !important;
+    }
+}
+
+
+
+
